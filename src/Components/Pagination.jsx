@@ -2,9 +2,9 @@ import React, { useContext } from 'react'
 import { AppContext } from '../context/AppContext'
 
 const Pagination = () => {
-  const {page,totalPages,handlePageChange} = useContext(AppContext);
+  const {page,totalPages,handlePageChange,myStyle} = useContext(AppContext);
   return (
-    <div className='w-full flex justify-center items-center border-2 fixed bottom-0 bg-white '>
+    <div className='w-full flex justify-center items-center border-2 fixed bottom-0 bg-white ' style={myStyle}>
       <div className='w-11/12 max-w-[670px] flex items-center justify-between py-2'>
         <div className='flex gap-6'>
           {

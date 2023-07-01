@@ -10,6 +10,10 @@ function AppContextProvider({ children }) {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
   const navigate = useNavigate();
+  const [myStyle,setmyStyle] = useState({
+    color:'black',
+    backgroundColor:'white'
+  });
 
   // data filling
   async function fetchBlogPosts(page = 1, tag = null, category) {
@@ -56,6 +60,8 @@ function AppContextProvider({ children }) {
     setTotalPages,
     fetchBlogPosts,
     handlePageChange,
+    myStyle,
+    setmyStyle
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

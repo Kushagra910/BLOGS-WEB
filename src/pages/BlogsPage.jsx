@@ -11,7 +11,7 @@ const BlogsPage = () => {
   const [relatedBlogs, setRelatedBlogs] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
-  const { loading, setLoading } = useContext(AppContext);
+  const { loading, setLoading ,myStyle,posts} = useContext(AppContext);
   const blogId = location.pathname.split("/").at(-1);
   const NewbaseUrl = "https://codehelp-apis.vercel.app/api/";
 
@@ -39,7 +39,7 @@ const BlogsPage = () => {
   }, [location.pathname]);
 
   return (
-    <div className="w-full h-full flex flex-col justify-center items-center">
+    <div className={`w-full ${ (posts.length <=1 ) ? ('h-screen') : 'h-full' }  flex flex-col justify-center items-center`} style={myStyle}>
       <Header />
       <div className="w-11/12 max-w-[670px] py-8 flex flex-col gap-y-7 mt-12">
         <div className="flex flex-col gap-5 justify-start items-baseline">
@@ -56,7 +56,7 @@ const BlogsPage = () => {
         ) : blog ? (
           <div>
             <Card post={blog} />
-            <h2 className="font-semibold text-2xl mt-10 mb-10">Related Blogs</h2>
+            <h2 className="font-semibold text-xl text-center sm:text-justify  sm:text-2xl mt-10 mb-10">Related Blogs</h2>
             {relatedBlogs.map((post) => (
               <div>
                 <Card key={post.id} post={post} />
@@ -64,7 +64,9 @@ const BlogsPage = () => {
             ))}
           </div>
         ) : (
-          <p>No Blogs Found</p>
+          <div className=" w-full h-screen flex justify-center items-center" style={myStyle}>
+            <p>No Blogs Found</p>
+          </div>
         )}
       </div>
     </div>

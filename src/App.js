@@ -8,7 +8,7 @@ import "./App.css";
 import { Route, Routes, useLocation, useSearchParams } from "react-router-dom";
 
 export default function App() {
-  const { fetchBlogPosts } = useContext(AppContext);
+  const { fetchBlogPosts , myStyle} = useContext(AppContext);
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
 
@@ -31,12 +31,13 @@ export default function App() {
     //   <Blogs/>
     //   <Pagination/>
     // </div>
-
-    <Routes>
+    <div className="w-full h-full" style={myStyle}>
+      <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/blog/:blogId" element={<BlogsPage />} />
       <Route path="/tags/:tag" element={<TagPage />} />
       <Route path="/categories/:category" element={<CategoryPage />} />
     </Routes>
+    </div>
   );
 }
